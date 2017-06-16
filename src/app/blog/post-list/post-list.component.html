@@ -1,0 +1,3 @@
+<div *ngIf="queryResult | async; let postList">
+  <app-post (click)="navigateTo(post.uid)" *ngFor="let post of postList.results" [post]="post"></app-post>
+</div>

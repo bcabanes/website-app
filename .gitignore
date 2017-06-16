@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# default configuration files
+/src/prismic-configuration.ts
+
 # compiled output
 /dist
 /tmp

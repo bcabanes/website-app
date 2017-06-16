@@ -20,7 +20,7 @@ This project uses [Angular](https://angular.io/), [Webpack](https://webpack.gith
 To be able to run this project, please make sure you fill the requirements.
 
 ### Node version
-This project is compatible with the version `7.10.0` of NodeJS. There is a `.nvmrc` file available and a `.node-version` for [nodenv](https://github.com/nodenv/nodenv) and [node-build](https://github.com/nodenv/node-build#readme) installed). 
+This project is compatible with the version `8.1.1` of NodeJS. There is a `.nvmrc` file available and a `.node-version` for [nodenv](https://github.com/nodenv/nodenv) and [node-build](https://github.com/nodenv/node-build#readme) installed). 
 If you're not sure of your installed version run the following command if you have installed NodeJS via NVM:
 ```bash
 nvm use

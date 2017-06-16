@@ -3,10 +3,14 @@
 <h1 align="center">Sktech MTL</h1>
 
 <div align="center">
-  <img alt="logo" src="https://raw.githubusercontent.com/sktechmlt/website-app/master/resources/sketchmtl.png" width="128">
+  <img alt="logo" src="https://raw.githubusercontent.com/sketchmlt/website-app/master/resources/sketchmtl.png" width="128">
 </div>
 <div align="center">
   <strong>The Montreal Sketch Community. FR & EN. We do events. We also offer workshops for companies.</strong>
+</div>
+
+<div align="center">
+  <!-- Build Status -->
 </div>
 
 This project uses [Angular](https://angular.io/), [Webpack](https://webpack.github.io/) and the [angular-cli](https://github.com/angular/angular-cli).

@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 import { PreviewComponent } from './preview.component';
-import { PrismicService } from '../prismic/prismic.service';
 import { PreviewRoutingModule } from './preview-routing.module';
-import { CookieService } from 'ngx-cookie';
 
 @NgModule({
   imports     : [
-    CommonModule,
+    SharedModule,
     PreviewRoutingModule
   ],
   declarations: [ PreviewComponent ],
-  providers   : [ CookieService, PrismicService ]
+  providers   : []
 })
 export class PreviewModule {
 }

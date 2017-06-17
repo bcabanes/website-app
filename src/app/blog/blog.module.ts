@@ -1,21 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PostComponent } from './post/post.component';
-import { PostListComponent } from './post-list/post-list.component';
-import { PrismicService } from '../prismic/prismic.service';
+import { SharedModule } from '../shared';
 import { BlogRoutingModule } from './blog-routing.module';
-import { PostDetailComponent } from './post-detail/post-detail.component';
-import { BlogComponent } from './blog.component';
-import { RouterModule } from '@angular/router';
+import { BLOG_COMPONENTS } from './components/index';
 
 @NgModule({
   imports     : [
-    CommonModule,
-    BlogRoutingModule,
-    RouterModule
+    SharedModule,
+    BlogRoutingModule
   ],
-  declarations: [ PostComponent, PostListComponent, PostDetailComponent, BlogComponent ],
-  providers: [ PrismicService ]
+  declarations: [ ...BLOG_COMPONENTS ]
 })
 export class BlogModule {
 }

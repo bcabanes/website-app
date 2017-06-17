@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PrismicModule } from './prismic/prismic.module';
 import { CookieModule } from 'ngx-cookie';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CookieModule } from 'ngx-cookie';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     AppRoutingModule,
     HttpModule,
     CookieModule.forRoot(),

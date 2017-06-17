@@ -11,7 +11,7 @@ export class LoggerService {
   }
 
   error(value: any, ...rest) {
-    console.log(value, ...rest);
+    console.error(value, ...rest);
   }
 
   warn(value: any, ...rest) {

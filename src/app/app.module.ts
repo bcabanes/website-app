@@ -1,13 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-
+import { CookieModule, CookieService } from 'ngx-cookie';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { PrismicModule } from './prismic/prismic.module';
-import { CookieModule } from 'ngx-cookie';
-import { CoreModule } from './core/core.module';
+import { HomeComponent } from './home';
+import { PrismicModule } from './prismic';
+import { CoreModule } from './core';
+import { SharedModule } from './shared';
 
 @NgModule({
   declarations: [
@@ -17,12 +16,12 @@ import { CoreModule } from './core/core.module';
   imports: [
     BrowserModule,
     CoreModule,
-    AppRoutingModule,
-    HttpModule,
+    SharedModule,
     CookieModule.forRoot(),
+    AppRoutingModule,
     PrismicModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

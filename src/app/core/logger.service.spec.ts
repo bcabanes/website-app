@@ -10,12 +10,12 @@ describe('core: LoggerService', () => {
     spyOn(console, 'warn');
 
     TestBed.configureTestingModule({
-      providers: [LoggerService]
+      providers: [ LoggerService ]
     });
   });
 
   describe('api', () => {
-    it('should have defined methods', inject([LoggerService], (logger: LoggerService) => {
+    it('should have defined methods', inject([ LoggerService ], (logger: LoggerService) => {
       expect(logger.log).toBeDefined();
       expect(logger.warn).toBeDefined();
       expect(logger.error).toBeDefined();
@@ -23,19 +23,19 @@ describe('core: LoggerService', () => {
   });
 
   describe('log', () => {
-    it('should log', inject([LoggerService], (logger: LoggerService) => {
-      logger.log('something to log');
-      expect(console.log).toHaveBeenCalledWith(['log']);
+    it('should log', inject([ LoggerService ], (logger: LoggerService) => {
+      logger.log('log');
+      expect(console.log).toHaveBeenCalledWith('log');
     }));
 
-    it('should error', inject([LoggerService], (logger: LoggerService) => {
-      logger.error('something to error');
-      expect(console.error).toHaveBeenCalledWith(['error']);
+    it('should error', inject([ LoggerService ], (logger: LoggerService) => {
+      logger.error('error');
+      expect(console.error).toHaveBeenCalledWith('error');
     }));
 
-    it('should warn', inject([LoggerService], (logger: LoggerService) => {
-      logger.warn('something to warn');
-      expect(console.warn).toHaveBeenCalledWith(['warn']);
+    it('should warn', inject([ LoggerService ], (logger: LoggerService) => {
+      logger.warn('warn');
+      expect(console.warn).toHaveBeenCalledWith('warn');
     }));
   });
 });

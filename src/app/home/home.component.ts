@@ -1,19 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PrismicService } from '../prismic/prismic.service';
-import { SingleQueryResult } from '../prismic/query-result.model';
-import { Observable } from 'rxjs/Observable';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../ngrx/index';
+import { PageService } from '../page/page.service';
 
 @Component({
-  selector: 'app-home',
+  selector   : 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls  : [ './home.component.css' ]
 })
-export class HomeComponent implements OnInit {
-  public queryResult: Observable<SingleQueryResult>;
+export class HomeComponent {
 
-  constructor(private prismicService: PrismicService) { }
-
-  ngOnInit() {
-    this.queryResult = this.prismicService.getSingleType('homepage');
+  constructor(private store: Store<IAppState>) {
   }
+
 }

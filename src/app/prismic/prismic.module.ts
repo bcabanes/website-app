@@ -3,10 +3,11 @@ import { PrismicService } from './prismic.service';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [
+  imports     : [
     SharedModule
   ],
   declarations: [],
-  providers: [PrismicService]
+  providers   : [ PrismicService ]
 })
-export class PrismicModule { }
+export class PrismicModule {
+}

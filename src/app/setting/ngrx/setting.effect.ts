@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { defer } from 'rxjs/observable/defer';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -15,9 +16,8 @@ import { SettingService } from '../setting.service';
 @Injectable()
 export class SettingEffect {
 
-  @Effect() init$: Observable<Action> = this.actions$
-    .ofType(SettingActions.ActionTypes.INIT)
-    .startWith(new SettingActions.InitAction())
+  @Effect() init$: Observable<Action> = defer(
+    () => Observable.of(new SettingActions.InitAction()))
     .switchMap((action: SettingActions.InitAction) =>
       this.settingService.get()
         .map(data => new SettingActions.ChangedAction(data))

@@ -29,7 +29,7 @@ before_install:
   - npm install -g npm
   # Prismic key configuration
   - cp src/prismic-configuration.default.ts src/prismic-configuration.ts
-  # en Prismic key configuration
+  # end Prismic key configuration
 
 install:
   - echo "Starting install."

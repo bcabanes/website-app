@@ -27,6 +27,9 @@ before_install:
   - echo "--no-sandbox" > ~/.config/chromium-flags.conf
   # end ui initialization for 2e2 tests.
   - npm install -g npm
+  # Prismic key configuration
+  - cp src/prismic-configuration.default.ts src/prismic-configuration.ts
+  # en Prismic key configuration
 
 install:
   - echo "Starting install."

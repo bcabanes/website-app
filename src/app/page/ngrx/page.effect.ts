@@ -11,24 +11,17 @@ import 'rxjs/add/operator/switchMap';
 
 import { PageActions } from './page.action';
 import { PageService } from '../page.service';
+import { defer } from 'rxjs/observable/defer';
 
 @Injectable()
 export class PageEffect {
 
-  // @Effect() navigateToHomePage$: Observable<Action> =
-  //             handleNavigation(this.actions$, this.store, 'home', (route: ActivatedRouteSnapshot) => {
-  //               return this.prismicService.getSingleType('home-page')
-  //                 .map(data => {
-  //                   return new PageActions.FetchPageListAction(data)
-  //                 });
-  //             });
-  @Effect() init$: Observable<Action> = this.actions$
-    .ofType(PageActions.ActionTypes.INIT)
-    .startWith(new PageActions.InitAction())
-    .switchMap((action: PageActions.InitAction) =>
-      this.pageService.getAll()
-        .map(data => new PageActions.ChangedAction(data))
-        .catch(error => Observable.of(new PageActions.ApiErrorAction(error))));
+    @Effect() init$: Observable<Action> = defer(
+      () => Observable.of(new PageActions.InitAction()))
+      .switchMap((action: PageActions.InitAction) =>
+        this.pageService.getAll()
+          .map(data => new PageActions.ChangedAction(data))
+          .catch(error => Observable.of(new PageActions.ApiErrorAction(error))));
 
   constructor(private actions$: Actions,
               private pageService: PageService) {

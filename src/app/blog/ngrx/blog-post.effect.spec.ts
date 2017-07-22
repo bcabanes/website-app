@@ -16,7 +16,7 @@ export class TestActions extends Actions {
   }
 }
 
-fdescribe('BlogPostEffect', () => {
+describe('BlogPostEffect', () => {
   let effects: BlogPostEffect;
   let pageService: any;
   let actions$: ReplaySubject<any>;

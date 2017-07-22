@@ -3,7 +3,7 @@ import { BlogPostState } from './blog-post.state';
 import { BlogPostDataInterface } from '../blog-post.model';
 import { BlogPostActions } from './blog-post.action';
 
-describe('PageReducer', () => {
+describe('BlogPostReducer', () => {
   describe('undefined action', () => {
     it('should return the default state', () => {
       const action = {} as any;

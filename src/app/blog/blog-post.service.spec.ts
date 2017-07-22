@@ -3,7 +3,7 @@ import { BlogPostService } from './blog-post.service';
 import { PrismicService } from '../prismic/prismic.service';
 import { Observable } from 'rxjs/Observable';
 
-fdescribe('Service: BlogPostService', () => {
+describe('Service: BlogPostService', () => {
   let blogPostService: BlogPostService;
   let prismicService: any;
 

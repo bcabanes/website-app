@@ -16,6 +16,11 @@ describe('PostComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PostComponent);
     component = fixture.componentInstance;
+    component.post = {
+      image: { value: { main: { url: '/url' } } },
+      title: { value: [ { text: 'some text' } ] },
+      content: { value: [ { text: 'some text' } ] }
+    };
     fixture.detectChanges();
   });
 

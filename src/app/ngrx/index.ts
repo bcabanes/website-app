@@ -10,9 +10,11 @@ import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 
 import { type } from '../shared/services/helpers/type';
 import { PageState } from '../page/ngrx/page.state';
+import { SettingState } from '../setting/ngrx/setting.state';
+import { BlogPostState } from '../blog/ngrx/blog-post.state';
+import { blogPostReducer } from '../blog/ngrx/blog-post.reducer';
 import { pageReducer } from '../page/ngrx/page.reducer';
 import { settingReducer } from '../setting/ngrx/setting.reducer';
-import { SettingState } from '../setting/ngrx/setting.state';
 
 export namespace AppActions {
   const CATEGORY = 'App';
@@ -34,6 +36,7 @@ export namespace AppActions {
 }
 
 export interface IAppState {
+  blogPostList: BlogPostState.IState,
   // eventPostList: '';
   pageList: PageState.IState;
   // tagList: '';
@@ -44,10 +47,10 @@ export interface IAppState {
 }
 
 export const appReducers: ActionReducerMap<IAppState> = {
+  blogPostList: blogPostReducer,
   pageList: pageReducer,
   settings: settingReducer,
   router: routerReducer
-
 };
 
 /**

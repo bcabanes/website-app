@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PrismicService } from '../../prismic/prismic.service';
-import { SingleQueryResult } from '../../prismic/query-result.model';
+import { IPrismic } from '../../prismic/query-result.model';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -10,15 +10,15 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
-  public queryResult: Observable<SingleQueryResult>;
+  public queryResult: Observable<IPrismic.SingleQueryResult>;
 
   constructor(private prismicService: PrismicService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.queryResult = this.route.params
       .map((params: Params): string => params['uid'])
-      .flatMap((uid: string): Observable<SingleQueryResult> =>
-        this.prismicService.getByUid('blog-post', uid))
+      .flatMap((uid: string): Observable<IPrismic.SingleQueryResult> =>
+        this.prismicService.getByUID('blog-post', uid))
   }
 
 }

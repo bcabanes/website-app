@@ -13,7 +13,6 @@ import { appReducers, developmentReducerFactory } from './ngrx/index';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { PageEffect } from './page/ngrx/page.effect';
 import { PageModule } from './page/page.module';
 import { SettingModule } from './setting/setting.module';
 

@@ -1,3 +1,5 @@
-<div *ngIf="queryResult | async; let postList">
-  <app-post (click)="navigateTo(post.uid)" *ngFor="let post of postList.results" [post]="post"></app-post>
+<code><pre>{{ postList$ | async | json }}</pre></code>
+
+<div *ngIf="postList$ | async; let postList">
+  <app-post (click)="navigateTo(post.uid)" *ngFor="let post of postList.data" [post]="post"></app-post>
 </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PrismicService } from '../../prismic/prismic.service';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { PaginatedQueryResult } from '../../prismic/query-result.model';
+import { IAppState } from '../../ngrx/index';
+
 
 @Component({
   selector: 'app-post-list',
@@ -10,12 +11,13 @@ import { PaginatedQueryResult } from '../../prismic/query-result.model';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  public queryResult: Observable<PaginatedQueryResult>;
+  public postList$: Observable<any>;
 
-  constructor(private prismicService: PrismicService, private router: Router) { }
+  constructor(private router: Router,
+              private store: Store<IAppState>) { }
 
   ngOnInit() {
-    this.queryResult = this.prismicService.getCustomType('blog-post');
+    this.postList$ = this.store.select(s => s.blogPostList)
   }
 
   public navigateTo(uid: string) {

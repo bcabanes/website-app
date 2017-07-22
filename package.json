@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "travis:test": "ng test --code-coverage --colors --single-run"
+    "travis:test": "ng test --code-coverage --colors --single-run && report-coverage",
+    "report-coverage": "cat ./coverage/report-lcov/lcov.info | codecov"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +41,7 @@
     "@angular/language-service": "^4.0.0",
     "@types/jasmine": "2.5.45",
     "@types/node": "~6.0.60",
+    "codecov.io": "^0.1.6",
     "codelyzer": "~3.0.1",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",

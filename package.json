@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "travis:test": "ng test --code-coverage --colors --single-run && report-coverage",
+    "travis:test": "ng test --code-coverage --colors --single-run && npm run report-coverage",
     "report-coverage": "cat ./coverage/report-lcov/lcov.info | codecov"
   },
   "private": true,

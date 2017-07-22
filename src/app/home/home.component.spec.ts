@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
 
 import { HomeComponent } from './home.component';
 
@@ -8,7 +9,10 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      providers: [
+        { provide: Store, useClass: class { dispatch = jasmine.createSpy('dispatch') } }
+      ]
     })
       .compileComponents();
   }));

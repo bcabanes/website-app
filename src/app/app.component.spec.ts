@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Store } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 
@@ -12,6 +13,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: Store, useClass: class { dispatch = jasmine.createSpy('dispatch') } },
+      ]
     }).compileComponents();
   }));
 

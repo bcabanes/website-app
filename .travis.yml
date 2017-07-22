@@ -1,0 +1,41 @@
+# http://docs.travis-ci.com/
+
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "8"
+addons:
+  apt:
+    packages:
+      - google-chrome-stable
+cache:
+  directories:
+    - $HOME/.npm/
+env:
+  global:
+    - DBUS_SESSION_BUS_ADDRESS=/dev/null
+
+before_install:
+  - set -e
+  - echo "Starting before_install."
+  # ui initialization for 2e2 tests.
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
+  - export CHROME_BIN=chromium-browser
+  - echo "--no-sandbox" > ~/.config/chromium-flags.conf
+  # end ui initialization for 2e2 tests.
+  - npm install -g npm
+  # Prismic key configuration
+  - cp src/prismic-configuration.default.ts src/prismic-configuration.ts
+  # end Prismic key configuration
+
+install:
+  - echo "Starting install."
+  - npm install
+
+script:
+  - echo "Starting script."
+  - echo ${TRAVIS_COMMIT_MESSAGE}
+  - npm run travis:test

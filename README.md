@@ -1,4 +1,4 @@
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Build Status](https://travis-ci.org/sketchmtl/website-app.svg?branch=master)](https://travis-ci.org/sketchmtl/website-app) [![codecov](https://codecov.io/gh/sketchmtl/website-app/branch/master/graph/badge.svg)](https://codecov.io/gh/sketchmtl/website-app)
 
 <h1 align="center">Sktech MTL</h1>
 

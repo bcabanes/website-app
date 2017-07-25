@@ -14,7 +14,7 @@ export class BlogPostService {
 
   getList(pageNumber: number = 1, pageSize: number = 20): Observable<BlogPostDataInterface[]> {
     return this.prismicService
-      .getCustomType('blog-post', `[blog-post.date desc]`, pageSize, pageNumber)
+      .getCustomType('blog-post', `[document.first_publication_date desc]`, pageSize, pageNumber)
       .map((response: IPrismic.PaginatedQueryResult) =>
         response.results.map(item =>
           ({ ...item.data[ 'blog-post' ], uid: item.uid })));

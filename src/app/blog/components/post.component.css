@@ -1,0 +1,12 @@
+.post-container {
+  margin: 15px auto;
+  padding: 10px;
+
+  border: 1px solid darkgray;
+  width: 500px;
+}
+
+.post-container img {
+  display: block;
+  width: 100%;
+}

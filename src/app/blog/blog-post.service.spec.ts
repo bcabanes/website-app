@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { BlogPostService } from './blog-post.service';
 import { PrismicService } from '../prismic/prismic.service';
 import { Observable } from 'rxjs/Observable';
+import { IBlogPostPaginationData } from './blog-post-pagination.model';
 
 describe('Service: BlogPostService', () => {
   let blogPostService: BlogPostService;
@@ -34,7 +35,7 @@ describe('Service: BlogPostService', () => {
         {
           alternate_languages   : [],
           data                  : {
-            'blog-post': { title: 'Some blog post title' }
+            'blog-post': { }
           },
           first_publication_date: '',
           href                  : '',
@@ -53,20 +54,20 @@ describe('Service: BlogPostService', () => {
       total_pages       : 1,
       total_results_size: 1
     });
-    const expected = [
-      {
-        uid: 'uid title blog post',
-        title    : 'Some blog post title'
-      }
-    ];
+
+    const expectedResult: IBlogPostPaginationData = {
+      data: [ { uid: 'uid title blog post' } ],
+      currentPage: 1,
+      totalPages: [ 0 ]
+    };
 
     prismicService.getCustomType.and.returnValue(response);
 
     blogPostService.getList()
       .subscribe(result => {
-        expect(result).toEqual(expected);
+        expect(result).toEqual(expectedResult);
         expect(prismicService.getCustomType)
-          .toHaveBeenCalledWith('blog-post', '[blog-post.date desc]', 20, 1);
+          .toHaveBeenCalledWith('blog-post', '[document.first_publication_date desc]', 20, 1);
       });
   });
 
@@ -74,7 +75,7 @@ describe('Service: BlogPostService', () => {
     const response = Observable.of({
       alternate_languages   : [],
       data                  : {
-        'blog-post': { title: 'Some blog post title' }
+        'blog-post': { }
       },
       first_publication_date: '',
       href                  : '',
@@ -88,16 +89,14 @@ describe('Service: BlogPostService', () => {
       uid                   : 'some-uid',
     });
     const blogPostUID = 'some-uid';
-    const expected = {
-      uid: 'some-uid',
-      title    : 'Some blog post title'
-    };
+
+    const expectedResult = { uid: 'some-uid' };
 
     prismicService.getByUID.and.returnValue(response);
 
     blogPostService.getByUID(blogPostUID)
       .subscribe(result => {
-        expect(result).toEqual(expected);
+        expect(result).toEqual(expectedResult);
         expect(prismicService.getByUID).toHaveBeenCalledWith('blog-post', blogPostUID);
       });
   });

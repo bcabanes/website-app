@@ -69,7 +69,7 @@ export class PrismicService {
                        orderings?: string,
                        pageSize?: number,
                        page?: number): Observable<IPrismic.PaginatedQueryResult> {
-    orderings = orderings || `[${type}.date desc]`;
+    orderings = orderings || '[document.first_publication_date desc]';
     pageSize = pageSize || 20;
     page = page || 1;
     return this.buildContext()

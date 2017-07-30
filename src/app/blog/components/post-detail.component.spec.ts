@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Observable } from 'rxjs/Observable';
 
 import { PostDetailComponent } from './post-detail.component';
 
@@ -8,9 +12,19 @@ describe('PostDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostDetailComponent ]
+      imports     : [ RouterTestingModule ],
+      declarations: [ PostDetailComponent ],
+      schemas     : [ CUSTOM_ELEMENTS_SCHEMA ],
+      providers   : [
+        {
+          provide : Store,
+          useClass: class {
+            select = () => Observable.of(new Map());
+          }
+        },
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,7 +1,7 @@
-<div *ngIf="queryResult | async; let post">
-  <img [src]="post.data['blog-post'].image.value.main.url" alt="post-image">
-  <h2>{{post.data['blog-post']['post-title'].value[0].text}}</h2>
-  <p>{{post.data['blog-post'].content.value[0].text}}</p>
+<pre><code>{{post$ | async | json}}</code></pre>
 
-  <pre><code>{{post | json}}</code></pre>
+<div *ngIf="post$ | async; let post">
+  <img [src]="post.image.value.main.url" alt="post-image">
+  <h2>{{post.title.value[0].text}}</h2>
+  <p>{{post.content.value[0].text}}</p>
 </div>

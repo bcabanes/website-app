@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
-import { EffectsModule } from '@ngrx/effects';
+
 import { SharedModule } from '../shared';
-import { BlogRoutingModule } from './blog-routing.module';
 import { BLOG_COMPONENTS } from './components/index';
-import { BlogPostEffect } from './ngrx/blog-post.effect';
+import { BlogRoutingModule } from './blog-routing.module';
 import { BlogPostService } from './blog-post.service';
+import { BlogPostListGuardService } from './blog-post-list-guard.service';
+import { BlogPostDetailGuardService } from './blog-post-detail-guard.service';
 
 @NgModule({
   imports     : [
     SharedModule,
-    BlogRoutingModule,
-    EffectsModule.forFeature([ BlogPostEffect ])
+    BlogRoutingModule
   ],
   declarations: [ ...BLOG_COMPONENTS ],
-  providers: [ BlogPostService ]
+  providers: [
+    BlogPostDetailGuardService,
+    BlogPostListGuardService,
+    BlogPostService
+  ]
 })
 export class BlogModule {
 }

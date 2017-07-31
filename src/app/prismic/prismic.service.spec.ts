@@ -45,7 +45,7 @@ describe('PrismicService', () => {
       })
     }));
 
-  it('should validate validateOnBoarding', inject([ PrismicService, Http ],
+  it('should validate OnBoarding', inject([ PrismicService, Http ],
     (prismicService: PrismicService, http: any) => {
       http.post.and.returnValue(Observable.of(true));
       prismicService.validateOnBoarding().subscribe(data => {

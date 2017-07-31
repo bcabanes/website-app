@@ -11,7 +11,8 @@ import { Context } from './context.model';
 import { Observable } from 'rxjs/Observable';
 
 const PrismicMock = {
-  api: () => Promise.resolve({})
+  api: () => Promise.resolve({}),
+  Predicates: { at: function() {} }
 };
 
 describe('PrismicService', () => {
@@ -42,7 +43,22 @@ describe('PrismicService', () => {
 
       prismicService.buildContext().subscribe((result) => {
         expect(result).toEqual(expectedResult);
-      })
+      });
+    }));
+
+  it('should NOT build context using default settings', inject([ PrismicService ],
+    (prismicService: PrismicService) => {
+      const expectedResult = {
+        api: {},
+        endpoint    : configDefault.apiEndpoint,
+        accessToken : configDefault.accessToken,
+        linkResolver: configDefault.linkResolver
+        // toolbar: function() {}
+      } as Context;
+
+      prismicService.buildContext().subscribe((result) => {
+        expect(result).not.toEqual(expectedResult);
+      });
     }));
 
   it('should validate OnBoarding', inject([ PrismicService, Http ],
@@ -50,6 +66,51 @@ describe('PrismicService', () => {
       http.post.and.returnValue(Observable.of(true));
       prismicService.validateOnBoarding().subscribe(data => {
         expect(data).toBe(true)
+      });
+    }));
+
+  it('should data from getByUID', inject([ PrismicService ],
+    (prismicService: PrismicService) => {
+      const expectedResult = { data: 'fromAPI'};
+      spyOn(prismicService, 'buildContext').and.returnValue(Observable.of({
+        api: { getByUID: () => Promise.resolve(expectedResult) },
+        endpoint    : config.apiEndpoint,
+        accessToken : config.accessToken,
+        linkResolver: config.linkResolver
+      }));
+
+      prismicService.getByUID('some-type', 'some-uid').subscribe(result => {
+        expect(result).toEqual(expectedResult);
+      });
+    }));
+
+  it('should data from getSingleType', inject([ PrismicService ],
+    (prismicService: PrismicService) => {
+      const expectedResult = { data: 'fromAPI'};
+      spyOn(prismicService, 'buildContext').and.returnValue(Observable.of({
+        api: { getSingle: () => Promise.resolve(expectedResult) },
+        endpoint    : config.apiEndpoint,
+        accessToken : config.accessToken,
+        linkResolver: config.linkResolver
+      }));
+
+      prismicService.getSingleType('some-type').subscribe(result => {
+        expect(result).toEqual(expectedResult);
+      });
+    }));
+
+  it('should data from getCustomType', inject([ PrismicService ],
+    (prismicService: PrismicService) => {
+      const expectedResult = { data: 'fromAPI'};
+      spyOn(prismicService, 'buildContext').and.returnValue(Observable.of({
+        api: { query: () => Promise.resolve(expectedResult) },
+        endpoint    : config.apiEndpoint,
+        accessToken : config.accessToken,
+        linkResolver: config.linkResolver
+      }));
+
+      prismicService.getCustomType('some-type').subscribe(result => {
+        expect(result).toEqual(expectedResult);
       });
     }));
 });

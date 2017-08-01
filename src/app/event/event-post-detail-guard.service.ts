@@ -20,13 +20,13 @@ export class EventPostDetailGuardService implements CanActivate {
               private store: Store<IAppState>) {
   }
 
-  hasBlogPostInStore(uid: string): Observable<boolean> {
+  hasEventPostInStore(uid: string): Observable<boolean> {
     return this.store.select(getEventPostList)
       .map(blogPostList => !!blogPostList.get(uid))
       .take(1);
   }
 
-  hasBlogPostInApi(uid: string): Observable<boolean> {
+  hasEventPostInApi(uid: string): Observable<boolean> {
     this.store.dispatch(new EventPostActions.FetchAction());
 
     return this.eventPostService.getByUID(uid)
@@ -40,17 +40,17 @@ export class EventPostDetailGuardService implements CanActivate {
       });
   }
 
-  hasBlogPost(uid: string): Observable<boolean> {
-    return this.hasBlogPostInStore(uid)
+  hasEventPost(uid: string): Observable<boolean> {
+    return this.hasEventPostInStore(uid)
       .switchMap(inStore => {
         if (inStore) {
           return Observable.of(inStore);
         }
-        return this.hasBlogPostInApi(uid);
+        return this.hasEventPostInApi(uid);
       });
   }
 
   canActivate(route: ActivatedRouteSnapshot) {
-    return this.hasBlogPost(route.params[ 'uid' ]);
+    return this.hasEventPost(route.params[ 'uid' ]);
   }
 }

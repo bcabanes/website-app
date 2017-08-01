@@ -15,7 +15,7 @@ import { getEntitiesByPage } from './ngrx/event-post.selector';
 @Injectable()
 export class EventPostListGuardService implements CanActivate {
 
-  constructor(private blogPostService: EventPostService,
+  constructor(private eventPostService: EventPostService,
               private router: Router,
               private store: Store<IAppState>) {
   }
@@ -29,7 +29,7 @@ export class EventPostListGuardService implements CanActivate {
   hasEventPostListInApi(pageNumber: number): Observable<boolean> {
     this.store.dispatch(new EventPostActions.FetchAction());
 
-    return this.blogPostService.getList(pageNumber)
+    return this.eventPostService.getList(pageNumber)
       .map(data => new EventPostActions.AddPaginatedItemListAction(data))
       .do(action => this.store.dispatch(action))
       .map(_ => true)

@@ -1,0 +1,7 @@
+<pre><code>{{event$ | async | json}}</code></pre>
+
+<div *ngIf="event$ | async; let event">
+  <img [src]="event.image.value.main.url" alt="event-image">
+  <h2>{{event.title.value[0].text}}</h2>
+  <p>{{event.content.value[0].text}}</p>
+</div>

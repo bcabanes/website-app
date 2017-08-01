@@ -15,6 +15,8 @@ import { BlogPostState } from '../blog/ngrx/blog-post.state';
 import { blogPostReducer } from '../blog/ngrx/blog-post.reducer';
 import { pageReducer } from '../page/ngrx/page.reducer';
 import { settingReducer } from '../setting/ngrx/setting.reducer';
+import { eventPostReducer } from '../event/ngrx/event-post.reducer';
+import { EventPostState } from '../event/ngrx/event-post.state';
 
 export namespace AppActions {
   const CATEGORY = 'App';
@@ -36,8 +38,8 @@ export namespace AppActions {
 }
 
 export interface IAppState {
-  blogPostList: BlogPostState.IState,
-  // eventPostList: '';
+  blogPostList: BlogPostState.IState;
+  event: EventPostState.IState;
   pageList: PageState.IState;
   // tagList: '';
   // teamMemberList: '';
@@ -48,6 +50,7 @@ export interface IAppState {
 
 export const appReducers: ActionReducerMap<IAppState> = {
   blogPostList: blogPostReducer,
+  event: eventPostReducer,
   pageList: pageReducer,
   settings: settingReducer,
   router: routerReducer

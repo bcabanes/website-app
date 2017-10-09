@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'blog', loadChildren: 'app/blog/blog.module#BlogModule' },
   { path: 'event', loadChildren: 'app/event/event.module#EventModule' },
+  { path: 'style-guide', loadChildren: 'app/style-guide/style-guide.module#StyleGuideModule' },
   // { path: 'preview', loadChildren: 'app/preview/preview.module#PreviewModule' },
 ];
 

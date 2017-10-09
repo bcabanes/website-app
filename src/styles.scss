@@ -3,5 +3,6 @@ $app-primary-base : #F5F5F5;
 $app-accent-base : #EF5350;
 
 html, body {
-  font-family : 'Karla', Arial, sans-serif;
+  color: $app-accent-base;
+  font-family : 'Karla', Helvetica Neue, Helvetica, Arial, sans-serif;
 }

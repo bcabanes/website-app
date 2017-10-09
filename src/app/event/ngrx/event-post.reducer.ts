@@ -27,7 +27,8 @@ export function eventPostReducer(state: EventPostState.IState = EventPostState.i
       };
     }
     case EventPostActions.ActionTypes.ADD_PAGINATED_ITEM_LIST: {
-      const payload: IEventPostPaginationData = (<EventPostActions.AddPaginatedItemListAction>action).payload;
+      const payload: IEventPostPaginationData =
+              (<EventPostActions.AddPaginatedItemListAction>action).payload;
       const data: Map<string, IEventPost> = new Map(state.data);
       const entityListByPage: Map<number, string[]> = new Map(state.entityListByPage);
 

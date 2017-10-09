@@ -1,5 +1,5 @@
 import { forwardRef, Inject, Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/map';
@@ -15,7 +15,8 @@ import { IPrismic } from './query-result.model';
 export class PrismicService {
   private repositoryRegexp = /^(https?:\/\/([-\w]+)\.[a-z]+\.(io|dev))\/api(\/v2)?$/;
 
-  constructor(private http: Http, @Inject(forwardRef(() => PRISMIC_TOKEN)) private prismic) {
+  constructor(private http: HttpClient,
+              @Inject(forwardRef(() => PRISMIC_TOKEN)) private prismic) {
   }
 
   public buildContext(): Observable<Context> {

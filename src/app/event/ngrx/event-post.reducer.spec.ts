@@ -74,7 +74,7 @@ describe('EventPostReducer', () => {
         EventPostState.initialState,
         {
           data            : new Map().set(paginationData.data[ 0 ].uid, paginationData.data[ 0 ]),
-          entityListByPage: new Map().set(1, paginationData.data[ 0 ].uid),
+          entityListByPage: new Map().set(1, [ paginationData.data[ 0 ].uid ]),
           currentPage     : 1,
           totalPages      : [ 1 ]
         });

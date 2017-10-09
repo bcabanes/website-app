@@ -24,6 +24,8 @@ export namespace IPrismic {
     results_size: number;
     total_pages: number;
     total_results_size: number;
+    version: string;
+    license: string;
   }
 
   export interface DataSetInterface<T> {

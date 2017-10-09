@@ -1,12 +1,19 @@
-<code>
-  <pre style="background: #EFEFEF; height: 200px; overflow: auto; width: 100%;">
-    {{ settings | async | json }}
-  </pre>
-</code>
+<div fxLayout="column" fxFlex>
+  <mat-sidenav-container fxFlex>
+    <mat-sidenav mode="side" opened="true">
+      <h1>SketchMTL</h1>
+      <hr>
+      <a routerLink="/blog">Go to blog</a>
+      <hr>
+      <a routerLink="/event">Go to event</a>
 
-<hr>
-<a routerLink="/blog">Go to blog</a>
-<hr>
-<a routerLink="/event">Go to event</a>
-<hr>
-<router-outlet></router-outlet>
+    </mat-sidenav>
+
+    <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- /.content -->
+  </mat-sidenav-container>
+</div>
+
+

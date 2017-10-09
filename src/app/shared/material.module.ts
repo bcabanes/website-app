@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { MatButtonModule, MatIconModule, MatIconRegistry } from '@angular/material';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatIconRegistry,
+  MatSidenavModule
+} from '@angular/material';
 
 import 'hammerjs';
 
 const MATERIALS_MODULES: any[] = [
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatSidenavModule
 ];
 
 @NgModule({

@@ -11,7 +11,7 @@ import { IEventPostPaginationData } from '../event-pagination.model';
 @Component({
   selector: 'app-post-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.css']
+  styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
   public eventList$: Observable<IEventPostPaginationData>;

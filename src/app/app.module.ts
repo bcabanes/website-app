@@ -1,18 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CookieModule, CookieService } from 'ngx-cookie';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+// app
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { PrismicModule } from './prismic';
 import { CoreModule } from './core';
 import { SharedModule } from './shared';
-import { environment } from '../environments/environment';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers, developmentReducerFactory } from './ngrx/index';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
 import { PageModule } from './page/page.module';
 import { SettingModule } from './setting/setting.module';
 

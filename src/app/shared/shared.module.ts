@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+// app
+import { MaterialModule } from './material.module';
 
 const MODULES: any[] = [
   CommonModule,
   HttpClientModule,
   RouterModule,
 
-  FlexLayoutModule
+  FlexLayoutModule,
+  MaterialModule
 ];
 
 @NgModule({

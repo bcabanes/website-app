@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 // app
+import { SharedModule } from '../shared/shared.module';
 import { StyleGuideRoutingModule } from './style-guide-routing.module';
 import { StyleGuideComponent } from './style-guide.component';
 
 @NgModule({
   declarations: [ StyleGuideComponent ],
-  imports: [ StyleGuideRoutingModule]
+  imports: [
+    SharedModule,
+    StyleGuideRoutingModule
+  ]
 })
 export class StyleGuideModule {
 }

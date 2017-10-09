@@ -16,6 +16,7 @@ import { SharedModule } from './shared';
 import { appReducers, developmentReducerFactory } from './ngrx/index';
 import { PageModule } from './page/page.module';
 import { SettingModule } from './setting/setting.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 let DEV_TOOLS: any[] = [];
 let reducersConfiguration = undefined;
@@ -35,6 +36,7 @@ if (!environment.production) {
   ],
   imports     : [
     BrowserModule,
+    BrowserAnimationsModule, // Material animations.
     CoreModule,
     CookieModule.forRoot(),
 

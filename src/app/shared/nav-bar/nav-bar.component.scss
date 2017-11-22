@@ -1,0 +1,12 @@
+@import 'variables';
+
+.nav-link {
+  padding: 1rem 0;
+  border-bottom: 3px solid transparent;
+  //text-align: center;
+  text-decoration: none;
+  transition: all 250ms ease-out;
+
+  &.active,
+  &:hover { border-bottom: 3px solid $link-color; }
+}

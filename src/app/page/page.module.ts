@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
-import { EffectsModule } from '@ngrx/effects';
-
-import { PageService } from './page.service';
-import { PageEffect } from './ngrx/page.effect';
+// app
+import { PageRoutingModule } from './page-routing.module';
+import { PageComponent } from './page.component';
+import { SharedModule } from '../shared/shared.module';
+import { PageDetailComponent } from './page-detail.component';
 
 @NgModule({
-  imports  : [
-    EffectsModule.forFeature([ PageEffect ]),
+  declarations: [
+    PageComponent,
+    PageDetailComponent
   ],
-  providers: [
-    PageService
+  imports  : [
+    PageRoutingModule,
+    SharedModule
   ]
 })
 export class PageModule {

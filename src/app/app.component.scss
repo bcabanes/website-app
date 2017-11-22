@@ -1,0 +1,17 @@
+@import '../styles';
+
+:host {
+  display : flex;
+  flex    : 1;
+}
+
+mat-sidenav {
+  background : $app-primary-base;
+}
+
+mat-sidenav-container {
+  color      : $app-accent-base;
+  background : $background;
+}
+
+.content { margin: 0 2rem; }

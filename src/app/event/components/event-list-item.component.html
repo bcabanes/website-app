@@ -1,0 +1,24 @@
+<article fxLayout="column" class="event-item">
+  <header>
+    <figure class="event-picture">
+      <img [src]="event.banner" alt="event-image">
+    </figure>
+    <h1 class="mat-title">{{event.title}}</h1>
+  </header>
+  <div fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="start center" class="event-metas">
+    <div fxLayout="row wrap" fxLayoutGap="6px" fxLayoutAlign="start start" class="tag-list">
+      <app-tag-label *ngFor="let tag of event.tags">{{tag}}</app-tag-label>
+    </div>
+    <!-- /.tag-list -->
+    <div class="date">
+      <mat-icon svgIcon="calendar"></mat-icon> {{ event.date | date:'y/MM/dd'}}
+    </div>
+    <!-- /.date -->
+    <div class="place">
+      <mat-icon svgIcon="locator"></mat-icon>
+      <a [href]="'//www.google.com/maps/place/'+event.location.lat+','+event.location.lon"
+         target="_blank">{{event.companyName}}</a>
+    </div>
+    <!-- /.place -->
+  </div>
+</article>

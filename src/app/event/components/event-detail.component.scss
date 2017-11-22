@@ -1,0 +1,25 @@
+.event-picture {
+  margin: 6px 0 36px 0;
+  img { width: 100%; }
+}
+
+.tag-list {
+  margin: 0 0 16px 0;
+}
+
+.sidebar {
+  & > * {
+    margin: 6px 0 16px 0;
+  }
+
+  .mat-icon { margin-right: 16px; }
+  .place a { text-decoration: none; }
+}
+
+.divider {
+  margin: 16px 0;
+  background-color: #E0E0E0;
+  border: none;
+  display: block;
+  height: 1px;
+}

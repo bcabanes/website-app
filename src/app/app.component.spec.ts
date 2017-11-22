@@ -1,21 +1,21 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Store } from '@ngrx/store';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+// app
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports     : [
-        RouterTestingModule
+        RouterTestingModule,
+        FlexLayoutModule
       ],
       declarations: [
         AppComponent
       ],
-      providers: [
-        { provide: Store, useClass: class { dispatch = jasmine.createSpy('dispatch') } },
-      ]
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
   }));
 

@@ -1,7 +1,34 @@
-<pre><code>{{event$ | async | json}}</code></pre>
-
-<div *ngIf="event$ | async; let event">
-  <img [src]="event.image.value.main.url" alt="event-image">
-  <h2>{{event.title.value[0].text}}</h2>
-  <p>{{event.content.value[0].text}}</p>
-</div>
+<article class="event-post-detail">
+  <figure class="event-picture">
+    <img [src]="event.banner" alt="event-image">
+  </figure>
+  <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+    <div class="details" fxFlex="65" fxFlex.xs="100">
+      <header>
+        <h1 class="mat-headline">{{event.title}}</h1>
+        <div fxLayout="row wrap" fxLayoutGap="6px" fxLayoutAlign="start start" class="tag-list">
+          <app-tag-label *ngFor="let tag of event.tags">{{tag}}</app-tag-label>
+        </div>
+        <!-- /.tags -->
+      </header>
+      <div [innerHTML]="event.description | mdToHtml" class="mat-body-1"></div>
+    </div>
+    <!-- /.details -->
+    <div class="sidebar" fxFlex="30" fxFlex.xs="100" fxLayout="column">
+      <a [href]="event.eventbriteLink" mat-raised-button color="accent">Inscription</a>
+      <div fxLayout="row" fxLayoutAlign="start center" class="date">
+        <mat-icon svgIcon="calendar" fxFlex="15"></mat-icon>
+        <span>{{ event.date | date:'y/MM/dd'}}</span>
+      </div>
+      <!-- /.date -->
+      <hr class="divider">
+      <div fxLayout="row" class="place">
+        <mat-icon fxFlex="15" svgIcon="locator"></mat-icon>
+        <a [href]="'//www.google.com/maps/place/'+event.location.lat+','+event.location.lon"
+           target="_blank">{{event.companyName}} <br /> {{event.companyAddress}}</a>
+      </div>
+      <!-- /.place -->
+    </div>
+    <!-- /.sidebar -->
+  </div>
+</article>

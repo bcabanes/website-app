@@ -1,35 +1,44 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Observable } from 'rxjs/Observable';
+// app
+import { EventDetailComponent } from './event-detail.component';
+import { MdToHtmlPipe } from 'app/shared/md-to-html.pipe';
 
-import { EventPostDetailComponent } from './event-detail.component';
-
-describe('EventPostDetailComponent', () => {
-  let component: EventPostDetailComponent;
-  let fixture: ComponentFixture<EventPostDetailComponent>;
+describe('EventDetailComponent', () => {
+  let component: EventDetailComponent;
+  let fixture: ComponentFixture<EventDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports     : [ RouterTestingModule ],
-      declarations: [ EventPostDetailComponent ],
-      schemas     : [ CUSTOM_ELEMENTS_SCHEMA ],
-      providers   : [
-        {
-          provide : Store,
-          useClass: class {
-            select = () => Observable.of(new Map());
-          }
-        },
-      ]
+      declarations: [
+        EventDetailComponent,
+        MdToHtmlPipe
+      ],
+      schemas     : [ CUSTOM_ELEMENTS_SCHEMA ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventPostDetailComponent);
+    fixture = TestBed.createComponent(EventDetailComponent);
     component = fixture.componentInstance;
+    component.event = {
+      banner: 'banner url',
+      companyAddress: 'some address',
+      companyName: 'some company name',
+      date: new Date().toISOString(),
+      description: 'some description',
+      eventbriteLink: 'some link',
+      location: {
+        lon: 15,
+        lat: 20
+      },
+      slug: 'some-title',
+      tags: [ 'tag1', 'tag2' ],
+      title: 'Some title',
+    };
     fixture.detectChanges();
   });
 

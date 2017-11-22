@@ -1,7 +1,0 @@
-<pre><code>{{post$ | async | json}}</code></pre>
-
-<div *ngIf="post$ | async; let post">
-  <img [src]="post.image.value.main.url" alt="post-image">
-  <h2>{{post.title.value[0].text}}</h2>
-  <p>{{post.content.value[0].text}}</p>
-</div>

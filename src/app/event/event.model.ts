@@ -1,8 +1,15 @@
-import { IPrismic } from '../prismic/query-result.model';
-
-export interface IEventPost {
-  uid?: string;
-  title?: IPrismic.DataSetInterface<IPrismic.StructuredText>;
-  image?: IPrismic.DataSetInterface<IPrismic.Image>;
-  content?: IPrismic.DataSetInterface<IPrismic.StructuredText>;
+export interface EventModel {
+  banner: string;
+  companyAddress: string;
+  companyName: string;
+  date: string;
+  description: string;
+  eventbriteLink: string;
+  location: {
+    lon: number;
+    lat: number;
+  };
+  slug: string;
+  tags: string[];
+  title: string;
 }

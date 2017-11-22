@@ -27,10 +27,11 @@ before_install:
   - echo "--no-sandbox" > ~/.config/chromium-flags.conf
   # end ui initialization for 2e2 tests.
   - npm install -g npm
-  # Prismic key configuration
-  - cp src/prismic-configuration.default.ts src/prismic-configuration.ts
-  - sed -i "s/your-repo-name/$PRISMIC_PATH/g" src/prismic-configuration.ts
-  # end Prismic key configuration
+  # Contentful key configuration
+  - cp src/contentful-configuration.default.ts src/contentful-configuration.ts
+  - sed -i "s/space-name/$CONTENTFUL_SPACE_ID/g" src/contentful-configuration.ts
+  - sed -i "s/access-token/$CONTENTFUL_ACCESS_TOKEN/g" src/contentful-configuration.ts
+  # end Contentful key configuration
 
 install:
   - echo "Starting install."

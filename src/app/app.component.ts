@@ -1,22 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { IAppState } from './ngrx/index';
-import { SettingState } from './setting/ngrx/setting.state';
+import { Component, OnDestroy } from '@angular/core';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector   : 'app-root',
   templateUrl: './app.component.html',
-  styleUrls  : [ './app.component.css' ]
+  styleUrls  : [ './app.component.scss' ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnDestroy {
   title = 'app';
-  settings: Observable<SettingState.IState>;
+  watcher: Subscription;
+  sideNavMode = 'side';
+  sideNavOpened = true;
 
-  constructor(private store: Store<IAppState>) {
+  constructor(private media: ObservableMedia) {
+    if (this.media.isActive('xs') && this.media.isActive('sm')) {
+      this.sideNavOpened = false;
+    }
+    this.watcher = media.subscribe((change: MediaChange) => {
+      switch (true) {
+        case change.mqAlias === 'xs':
+        case change.mqAlias === 'sm':
+          this.sideNavMode = 'over';
+          this.sideNavOpened = false;
+          break;
+        default:
+          this.sideNavMode = 'side';
+          this.sideNavOpened = true;
+          break;
+      }
+    });
   }
 
-  ngOnInit() {
-    this.settings = this.store.select(s => s.settings);
+  ngOnDestroy() {
+    this.watcher.unsubscribe();
   }
 }

@@ -1,0 +1,116 @@
+<div class="mat-display-3">Style guide</div>
+
+<section>
+  <h1 class="mat-headline">Typography</h1>
+
+  <h2 class="mat-title">Displays</h2>
+  <div class="mat-body-1">
+    <p><code>display-4</code>, <code>display-3</code>, <code>display-2</code> and <code>display-1</code> - Large, one-off headers, usually at the top of the page (e.g. a hero header).</p>
+  </div>
+  <div class="mat-display-4">display-4</div>
+  <div class="mat-display-3">display-3</div>
+  <div class="mat-display-2">display-2</div>
+  <div class="mat-display-1">display-1</div>
+
+  <h2 class="mat-title">headline</h2>
+  <div class="mat-body-1">
+    <p><code>headline</code> - Section heading corresponding to the <code>&lt;h1&gt;</code> tag.</p>
+  </div>
+  <div class="mat-headline">headline</div>
+
+  <h2 class="mat-title">title</h2>
+  <div class="mat-body-1">
+    <p><code>title</code> - Section heading corresponding to the <code>&lt;h2&gt;</code> tag.</p>
+  </div>
+  <div class="mat-title">title</div>
+
+  <h2 class="mat-title">subheading-2</h2>
+  <div class="mat-body-1">
+    <p><code>subheading-2</code> - Section heading corresponding to the <code>&lt;h3&gt;</code> tag.</p>
+  </div>
+  <div class="mat-subheading-2">subheading-2</div>
+
+  <h2 class="mat-title">subheading-1</h2>
+  <div class="mat-body-1">
+    <p><code>subheading-1</code> - Section heading corresponding to the <code>&lt;h4&gt;</code> tag.</p>
+  </div>
+  <div class="mat-subheading-1">subheading-1</div>
+
+  <h2 class="mat-title">body</h2>
+  <div class="mat-body-1">
+    <p><code>body</code> - Base body text.</p>
+  </div>
+  <div class="mat-body-1">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aut, dicta ducimus excepturi illum impedit, nemo obcaecati odio officia quibusdam quidem, reiciendis voluptatem? Consequatur laborum officiis quo. Ex, laborum, perspiciatis!</p>
+  </div>
+
+  <h2 class="mat-title">body-2</h2>
+  <div class="mat-body-2">
+    <p><code>body-2</code> - Bolder body text.</p>
+  </div>
+  <div class="mat-body-2">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aut, dicta ducimus excepturi illum impedit, nemo obcaecati odio officia quibusdam quidem, reiciendis voluptatem? Consequatur laborum officiis quo. Ex, laborum, perspiciatis!</p>
+  </div>
+
+  <h2 class="mat-title">caption</h2>
+  <div class="mat-body-1">
+    <p><code>caption</code> - Smaller body text and hint text.</p>
+  </div>
+  <div class="mat-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aut, dicta ducimus excepturi illum impedit, nemo obcaecati odio!</div>
+
+  <h2 class="mat-title">button</h2>
+  <div class="mat-body-1">
+    <p><code>button</code> - Buttons and anchors.</p>
+  </div>
+  <div class="mat-button">Button class text</div>
+  <button class="mat-button">button</button>
+  <a class="mat-button" href="javascript:void(0)">link</a>
+</section>
+
+<section>
+  <h1 class="mat-heading">General layout</h1>
+  <p>General layout is already available and used in the whole application, this page uses it.</p>
+</section>
+
+<section>
+  <h1 class="mat-heading">Logo</h1>
+  <app-logo></app-logo>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <app-logo fxFlex="45"></app-logo>
+    <app-logo fxFlex="30"></app-logo>
+    <app-logo fxFlex="20"></app-logo>
+  </div>
+</section>
+
+<section>
+  <h1 class="mat-heading">Icons</h1>
+  <p>
+    <mat-icon svgIcon="calendar"></mat-icon>
+    <mat-icon svgIcon="cross"></mat-icon>
+    <mat-icon svgIcon="facebook"></mat-icon>
+    <mat-icon svgIcon="locator"></mat-icon>
+    <mat-icon svgIcon="open"></mat-icon>
+    <mat-icon svgIcon="twitter"></mat-icon>
+    <mat-icon svgIcon="slack"></mat-icon>
+    <mat-icon svgIcon="menu"></mat-icon>
+  </p>
+</section>
+
+<section>
+  <h1 class="mat-heading">Slack button</h1>
+  <button mat-raised-button color="accent">
+    <mat-icon svgIcon="slack"></mat-icon> Join our Slack channel</button>
+</section>
+
+<section>
+  <h1 class="mat-heading">Website info</h1>
+  <div fxLayout="row" fxLayoutAlign="space-around center"
+       style="padding: 1rem 0; background: #F5F5F5; width:320px;">
+    <app-sidebar></app-sidebar>
+  </div>
+</section>
+
+<section>
+  <h1 class="mat-heading">Nav bar</h1>
+  <app-nav-bar></app-nav-bar>
+</section>

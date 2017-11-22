@@ -1,5 +1,17 @@
 <div class="event-container">
-  <img [src]="event.image.value.main.url" alt="post-image">
-  <h2>{{event.title.value[0].text}}</h2>
-  <p>{{event.content.value[0].text}}</p>
+  <h3 class="mat-subheading-1 event-category-title">Next event</h3>
+  <div *ngIf="currentEvent" class="event-detail-container">
+    <app-event-detail [event]="currentEvent"></app-event-detail>
+  </div>
+  <!-- /.event-details-container -->
+
+  <h3 class="mat-subheading-1 event-category-title">Passed event</h3>
+  <div *ngIf="pastEventList"
+       fxLayout="row wrap" fxLayoutAlign="space-between start" class="event-list-container">
+    <app-event-list-item *ngFor="let item of pastEventList"
+                         [event]="item"
+                         fxFlex="48" fxFlex.lt-sm="100"></app-event-list-item>
+  </div>
+  <!-- /.event-list-container -->
 </div>
+<!-- /.events-container -->

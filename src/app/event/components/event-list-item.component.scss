@@ -1,0 +1,15 @@
+a { text-decoration : none; }
+
+.event-picture {
+  margin: 0 0 16px 0;
+  img { width: 100%; }
+}
+
+.event-metas { font-size: 70%; }
+.event-metas > div { margin: 6px 0; }
+
+mat-icon {
+  height: 16px;
+  width: 16px;
+  vertical-align: bottom;
+}

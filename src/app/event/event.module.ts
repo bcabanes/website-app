@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared';
-import { EVENT_COMPONENTS } from './components/index';
+import { EVENT_COMPONENTS } from './components';
 import { EventRoutingModule } from './event-routing.module';
 
 @NgModule({

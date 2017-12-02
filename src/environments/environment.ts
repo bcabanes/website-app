@@ -6,5 +6,7 @@ import { contentfulConfiguration } from '../contentful-configuration';
 
 export const environment = {
   production: false,
-  contentful: contentfulConfiguration
+  contentful: contentfulConfiguration,
+  i18nFilePath: './assets/i18n/',
+  i18nFileExt: '.json'
 };

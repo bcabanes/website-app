@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,10 +17,13 @@ import { Component } from '@angular/core';
   styleUrls:  [ './nav-bar.component.scss' ]
 })
 export class NavBarComponent {
+  linkList: { name: string, path: string }[];
 
-  linkList: { name: string, path: string }[] = [
-    { name: 'Events', path: '/events' },
-    { name: 'Team', path: '/page/team' },
-    { name: 'Partners', path: '/page/partners' }
-  ];
+  constructor(private localizeRouterService: LocalizeRouterService) {
+    this.linkList = [
+      { name: 'Events', path: <string>this.localizeRouterService.translateRoute('/events') },
+      { name: 'Team', path: <string>this.localizeRouterService.translateRoute('/page/team') },
+      { name: 'Partners', path: <string>this.localizeRouterService.translateRoute('/page/partners') }
+    ];
+  }
 }

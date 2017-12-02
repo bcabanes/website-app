@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 // app
 import { MaterialModule } from './material.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -27,7 +28,9 @@ const MODULES: any[] = [
   RouterModule,
 
   FlexLayoutModule,
-  MaterialModule
+  MaterialModule,
+
+  TranslateModule
 ];
 
 @NgModule({

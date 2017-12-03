@@ -9,8 +9,8 @@ import { MatSidenav } from '@angular/material';
     <div class="top-bar-container">
       <div fxFill fxLayout="row" fxLayoutAlign="space-between center">
         <app-logo fxFlex="50" fxFlex.gt-xs="30"></app-logo>
-        <div fxFlex="35" class="language-switcher">
-          language switcher
+        <div fxFlex="35" fxLayoutAlign="center center" class="language-switcher">
+          <app-language-switcher></app-language-switcher>
         </div>
         <!-- /.language-switcher -->
         <button md-button (click)="sidenavRef.toggle()">

@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule } from 'localize-router';
 // app
+import { FooterComponent } from './footer/footer.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import { MaterialModule } from './material.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -16,6 +17,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { MdToHtmlPipe } from './md-to-html.pipe';
 
 const COMPONENTS: any[] = [
+  FooterComponent,
   LanguageSwitcherComponent,
   LogoComponent,
   NavBarComponent,

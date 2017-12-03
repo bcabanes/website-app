@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import {
   MatButtonModule,
   MatIconModule,
@@ -18,7 +18,7 @@ const MATERIALS_MODULES: any[] = [
 
 @NgModule({
   imports: [
-    HttpModule,
+    HttpClientModule,
     ...MATERIALS_MODULES
   ],
   exports: [ ...MATERIALS_MODULES ]

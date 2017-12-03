@@ -11,8 +11,8 @@ import { PageDetailComponent } from './page-detail.component';
     PageDetailComponent
   ],
   imports  : [
-    PageRoutingModule,
-    SharedModule
+    SharedModule,
+    PageRoutingModule
   ]
 })
 export class PageModule {

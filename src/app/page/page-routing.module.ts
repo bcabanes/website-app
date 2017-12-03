@@ -11,7 +11,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    LocalizeRouterModule.forChild(routes)
+    LocalizeRouterModule.forChild(routes),
   ]
 })
 export class PageRoutingModule {

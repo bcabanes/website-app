@@ -2,7 +2,6 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { PageModel } from './page.model';
 // app
 
-
 @Component({
   selector: 'app-page-detail',
   encapsulation: ViewEncapsulation.None,

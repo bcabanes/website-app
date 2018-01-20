@@ -2,11 +2,11 @@
   <figure class="event-picture">
     <img [src]="event.banner" alt="event-image">
   </figure>
-  <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+  <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between start">
     <div class="details" fxFlex="65" fxFlex.xs="100">
       <header>
         <h1 class="mat-headline">{{event.title}}</h1>
-        <div fxLayout="row wrap" fxLayoutGap="6px" fxLayoutAlign="start start" class="tag-list">
+        <div fxLayout="row" fxLayoutWrap fxLayoutGap="6px" fxLayoutAlign="start start" class="tag-list">
           <app-tag-label *ngFor="let tag of event.tags">{{tag}}</app-tag-label>
         </div>
         <!-- /.tags -->

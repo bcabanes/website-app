@@ -33,7 +33,7 @@
     "contentful": "^5.0.5",
     "core-js": "^2.5.3",
     "hammerjs": "^2.0.8",
-    "localize-router": "^1.0.0-rc.3",
+    "localize-router": "git+https://github.com/Greentube/localize-router.git#master",
     "localize-router-http-loader": "^1.0.1",
     "marked": "^0.3.12",
     "rxjs": "5.5.6",

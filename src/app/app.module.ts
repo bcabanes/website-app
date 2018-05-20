@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { CoreModule } from './core';
+import { LocalizeGuard } from './localize/localize.guard';
+import { LocalizeComponent } from './localize/localize.component';
+import { LocalizeService } from './localize/localize.service';
 import { SharedModule } from './shared';
 import { ContentfulModule } from './contentful/contentful.module';
 import { environment } from 'environments/environment';
@@ -20,7 +23,12 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LocalizeComponent
+  ],
+  providers: [
+    LocalizeService,
+    LocalizeGuard
   ],
   imports     : [
     BrowserModule,

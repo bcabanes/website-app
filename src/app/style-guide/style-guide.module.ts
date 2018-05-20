@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 // app
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared';
 import { StyleGuideRoutingModule } from './style-guide-routing.module';
 import { StyleGuideComponent } from './style-guide.component';
 

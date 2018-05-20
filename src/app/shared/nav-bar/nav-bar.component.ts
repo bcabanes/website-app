@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalizeRouterService } from 'localize-router';
-import { Observable } from 'rxjs/Observable';
-import { map, startWith, tap } from 'rxjs/operators';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav-bar',
@@ -21,17 +21,16 @@ import { map, startWith, tap } from 'rxjs/operators';
 export class NavBarComponent implements OnInit {
   linkList: Observable<{ name: string, path: string }[]>;
 
-  constructor(private localizeRouterService: LocalizeRouterService) {}
+  constructor(private translateService: TranslateService) {}
 
   ngOnInit() {
-    this.linkList = this.localizeRouterService.routerEvents.asObservable()
-      .pipe(
-        startWith(this.localizeRouterService.parser.currentLang),
-        map(language => [
-          { name: 'Events', path: <string>this.localizeRouterService.translateRoute('/events') },
-          { name: 'Team', path: <string>this.localizeRouterService.translateRoute('/page/team') },
-          { name: 'Partners', path: <string>this.localizeRouterService.translateRoute('/page/partners') }
-        ])
-      );
+    this.linkList = this.translateService.onLangChange.pipe(
+      map((langChangeEvent: LangChangeEvent) => langChangeEvent.lang),
+      map(language => [
+        { name: 'Events', path: `${language}/events` },
+        { name: 'Team', path: `${language}/page/team` },
+        { name: 'Partners', path: `${language}/page/partners` }
+      ])
+    );
   }
 }

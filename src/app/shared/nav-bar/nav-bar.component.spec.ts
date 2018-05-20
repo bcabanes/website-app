@@ -1,29 +1,27 @@
-import { LocalizeRouterService } from 'localize-router';
 import { skip } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 // app
 import { NavBarComponent } from './nav-bar.component';
 
-fdescribe('NavBarComponent', () => {
+describe('NavBarComponent', () => {
   it('should instantiate', () => {
-    const localizeRouterServiceMock = {
-      routerEvents: new Subject<string>(),
-      parser: { currentLang: 'en' },
-      translateRoute: function(path): string { return this.parser.currentLang.concat(path); }
+    const changeLang$ = new Subject<string>();
+    const translateServiceMock = {
+      onLangChange: changeLang$.asObservable()
     };
 
-    expect(new NavBarComponent(localizeRouterServiceMock as LocalizeRouterService)).toBeTruthy();
+    expect(new NavBarComponent(translateServiceMock as any)).toBeTruthy();
   });
 
   it('should start with a default language for translating paths', () => {
-    const localizeRouterServiceMock = {
-      routerEvents: new Subject<string>(),
-      parser: { currentLang: 'en' },
-      translateRoute: function(path): string { return this.parser.currentLang.concat(path); }
+    const changeLang$ = new Subject<string>();
+    const translateServiceMock = {
+      onLangChange: changeLang$.asObservable()
     };
-    const component = new NavBarComponent(localizeRouterServiceMock as LocalizeRouterService);
+    const component = new NavBarComponent(translateServiceMock as any);
 
     component.ngOnInit();
+    changeLang$.next('en');
 
     component.linkList.subscribe(data => {
       expect(data).toEqual([
@@ -35,17 +33,15 @@ fdescribe('NavBarComponent', () => {
   });
 
   it('should be able to switch the language for translating paths', () => {
-    const localizeRouterServiceMock = {
-      routerEvents: new Subject<string>(),
-      parser: { currentLang: 'en' },
-      translateRoute: function(path): string { return this.parser.currentLang.concat(path); }
+    const changeLang$ = new Subject<string>();
+    const translateServiceMock = {
+      onLangChange: changeLang$.asObservable()
     };
-    const component = new NavBarComponent(localizeRouterServiceMock as LocalizeRouterService);
+    const component = new NavBarComponent(translateServiceMock as any);
 
-    component.ngOnInit(); // language 'en'
-
-    localizeRouterServiceMock.parser.currentLang = 'fr';
-    localizeRouterServiceMock.routerEvents.next('fr'); // language 'fr'
+    component.ngOnInit();
+    changeLang$.next('en'); // language 'en' (is skipped)
+    changeLang$.next('fr'); // language 'fr'
 
     component.linkList.pipe(skip(1)).subscribe(data => {
       expect(data).toEqual([

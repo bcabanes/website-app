@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+// app
 import { LocalizeComponent } from './localize.component';
 
 describe('LocalizeComponent', () => {
@@ -8,7 +9,8 @@ describe('LocalizeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocalizeComponent ]
+      declarations: [ LocalizeComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

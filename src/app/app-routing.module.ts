@@ -20,7 +20,7 @@ const routes: Routes = [
 ];
 
 export function HttpLoaderFactory(translate, location, settings) {
-  return new ManualParserLoader(translate, location, settings, [ 'en', 'fr' ]);
+  return new ManualParserLoader(translate, location, settings, [ 'en', 'fr' ], '');
 }
 
 @NgModule({

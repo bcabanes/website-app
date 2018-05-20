@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalizeRouterService } from 'localize-router';
 import { Observable } from 'rxjs/Observable';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav-bar',

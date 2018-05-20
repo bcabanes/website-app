@@ -17,3 +17,5 @@ code {
   font-family: Roboto Mono, monospace;
   font-size: 90%;
 }
+
+mat-sidenav-content.mat-sidenav-content { height: auto; } // fix scroll issue

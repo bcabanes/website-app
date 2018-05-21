@@ -41,3 +41,4 @@ script:
   - echo "Starting script."
   - echo ${TRAVIS_COMMIT_MESSAGE}
   - npm run travis:test
+  - npm run report-coverage

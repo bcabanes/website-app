@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 // app
 import { ContentfulService } from '../contentful/contentful.service';
 import { PageModel } from './page.model';
@@ -26,9 +26,11 @@ export class PageComponent implements OnInit {
 
   ngOnInit() {
     this.page$ = this.route.paramMap
-      .switchMap((params: ParamMap) =>
+      .pipe(switchMap((params: ParamMap) =>
         this.contentfulService.getContentList('page')
-          .map(pageList => pageList.filter(page => page.slug === params.get('page-slug')))
-          .map(pageList => pageList.shift()));
+          .pipe(
+            map(pageList => pageList.filter(page => page.slug === params.get('page-slug'))),
+            map(pageList => pageList.shift()))
+      ));
   }
 }

@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { CoreModule } from './core';
+import { LocalizeGuard } from './localize/localize.guard';
+import { LocalizeService } from './localize/localize.service';
 import { SharedModule } from './shared';
 import { ContentfulModule } from './contentful/contentful.module';
 import { environment } from 'environments/environment';
@@ -21,6 +23,10 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent
+  ],
+  providers: [
+    LocalizeService,
+    LocalizeGuard
   ],
   imports     : [
     BrowserModule,

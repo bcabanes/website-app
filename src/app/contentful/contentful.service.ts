@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+import { fromPromise } from 'rxjs/internal-compatibility';
+import { map } from 'rxjs/operators';
 import * as contentful from 'contentful';
 // app
 import { environment } from 'environments/environment';
@@ -16,15 +16,15 @@ export class ContentfulService {
   }
 
   public getContent(contentId: string) {
-    return Observable.fromPromise(this.client.getEntry(contentId))
-      .map((entry: any) => entry.fields);
+    return fromPromise(this.client.getEntry(contentId))
+      .pipe(map((entry: any) => entry.fields));
   }
 
   public getContentList(contentType: string): Observable<any[]> {
-    return Observable.fromPromise(this.client.getEntries({
+    return fromPromise(this.client.getEntries({
       content_type: contentType,
       order: '-sys.createdAt'
     }))
-      .map((entry: any) => entry.items.map(item => item.fields));
+      .pipe(map((entry: any) => entry.items.map(item => item.fields)));
   }
 }

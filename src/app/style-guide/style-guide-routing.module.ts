@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LocalizeRouterModule } from 'localize-router';
 // app
 import { StyleGuideComponent } from './style-guide.component';
 
@@ -10,8 +9,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes),
-    LocalizeRouterModule.forChild(routes)
+    RouterModule.forChild(routes)
   ]
 })
 export class StyleGuideRoutingModule {

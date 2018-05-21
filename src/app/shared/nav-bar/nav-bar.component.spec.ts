@@ -1,34 +1,54 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
+import { skip } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 // app
 import { NavBarComponent } from './nav-bar.component';
 
 describe('NavBarComponent', () => {
-  let component: NavBarComponent;
-  let fixture: ComponentFixture<NavBarComponent>;
+  it('should instantiate', () => {
+    const changeLang$ = new Subject<string>();
+    const translateServiceMock = {
+      onLangChange: changeLang$.asObservable()
+    };
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NavBarComponent ],
-      imports: [ RouterTestingModule ],
-      providers: [
-        {
-          provide: LocalizeRouterService,
-          useValue: jasmine.createSpyObj('localizeRouterService', [ 'translateRoute' ])
-        }
-      ]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NavBarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    expect(new NavBarComponent(translateServiceMock as any)).toBeTruthy();
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
+  it('should start with a default language for translating paths', () => {
+    const changeLang$ = new Subject<string>();
+    const translateServiceMock = {
+      onLangChange: changeLang$.asObservable()
+    };
+    const component = new NavBarComponent(translateServiceMock as any);
+
+    component.ngOnInit();
+    changeLang$.next('en');
+
+    component.linkList.subscribe(data => {
+      expect(data).toEqual([
+        { name: 'Events', path: 'en/events' },
+        { name: 'Team', path: 'en/page/team' },
+        { name: 'Partners', path: 'en/page/partners' }
+      ]);
+    });
+  });
+
+  it('should be able to switch the language for translating paths', () => {
+    const changeLang$ = new Subject<string>();
+    const translateServiceMock = {
+      onLangChange: changeLang$.asObservable()
+    };
+    const component = new NavBarComponent(translateServiceMock as any);
+
+    component.ngOnInit();
+    changeLang$.next('en'); // language 'en' (is skipped)
+    changeLang$.next('fr'); // language 'fr'
+
+    component.linkList.pipe(skip(1)).subscribe(data => {
+      expect(data).toEqual([
+        { name: 'Events', path: 'fr/events' },
+        { name: 'Team', path: 'fr/page/team' },
+        { name: 'Partners', path: 'fr/page/partners' }
+      ]);
+    });
   });
 });

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { LocalizeRouterService } from 'localize-router';
+import { Component, OnInit } from '@angular/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,7 +9,7 @@ import { LocalizeRouterService } from 'localize-router';
     <div fxFill fxLayout="row" fxLayoutGap="24px"
          fxFlexAlign="space-between center"
          class="nav-bar" >
-      <a *ngFor="let link of linkList"
+      <a *ngFor="let link of linkList | async"
          [routerLink]="link.path"
          routerLinkActive="active"
          fxFlex="none" fxFlex.lt-md="auto"
@@ -16,14 +18,19 @@ import { LocalizeRouterService } from 'localize-router';
   `,
   styleUrls:  [ './nav-bar.component.scss' ]
 })
-export class NavBarComponent {
-  linkList: { name: string, path: string }[];
+export class NavBarComponent implements OnInit {
+  linkList: Observable<{ name: string, path: string }[]>;
 
-  constructor(private localizeRouterService: LocalizeRouterService) {
-    this.linkList = [
-      { name: 'Events', path: <string>this.localizeRouterService.translateRoute('/events') },
-      { name: 'Team', path: <string>this.localizeRouterService.translateRoute('/page/team') },
-      { name: 'Partners', path: <string>this.localizeRouterService.translateRoute('/page/partners') }
-    ];
+  constructor(private translateService: TranslateService) {}
+
+  ngOnInit() {
+    this.linkList = this.translateService.onLangChange.pipe(
+      map((langChangeEvent: LangChangeEvent) => langChangeEvent.lang),
+      map(language => [
+        { name: 'Events', path: `${language}/events` },
+        { name: 'Team', path: `${language}/page/team` },
+        { name: 'Partners', path: `${language}/page/partners` }
+      ])
+    );
   }
 }

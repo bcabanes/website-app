@@ -1,25 +1,33 @@
-import { Component } from '@angular/core';
-import { LocalizeRouterService } from 'localize-router';
+import { Component, OnInit } from '@angular/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+// app
+import { LocalizeService } from '../../localize/localize.service';
 
 @Component({
   selector: 'app-language-switcher',
   template: `
-    <div fxLayout="center center" class="box-container">
-      <div (click)="switchLang('en')" [ngClass]="{ 'active': active === 'en'}" class="box">en</div>
-      <div (click)="switchLang('fr')" [ngClass]="{ 'active': active === 'fr'}" class="box">fr</div>
+    <div *ngIf="activeLanguage | async as language" fxLayout="center center" class="box-container">
+      <div (click)="switchLang('en')" [ngClass]="{ 'active': language === 'en'}" class="box">en</div>
+      <div (click)="switchLang('fr')" [ngClass]="{ 'active': language === 'fr'}" class="box">fr</div>
     </div>
   `,
   styleUrls: [ './language-switcher.component.scss' ]
 })
-export class LanguageSwitcherComponent {
-  active: string;
+export class LanguageSwitcherComponent implements OnInit {
+  activeLanguage: Observable<string>;
 
-  constructor(private localizeService: LocalizeRouterService) {
-    this.active = this.localizeService.parser.currentLang;
-    this.localizeService.routerEvents.subscribe(language => this.active = language);
+  constructor(private localizeService: LocalizeService, private translateService: TranslateService) {
+  }
+
+  ngOnInit() {
+    this.activeLanguage = this.translateService.onLangChange.pipe(
+      map((langChangeEvent: LangChangeEvent) => langChangeEvent.lang)
+    );
   }
 
   switchLang(language: string) {
-    this.localizeService.changeLanguage(language);
+    this.localizeService.switchLanguage(language);
   }
 }

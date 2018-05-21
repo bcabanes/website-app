@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs';
 // app
 import { EventComponent } from './event.component';
 import { ContentfulService } from '../../contentful/contentful.service';
@@ -30,7 +29,7 @@ describe('EventComponent', () => {
     fixture = TestBed.createComponent(EventComponent);
     component = fixture.componentInstance;
     contentfulService = TestBed.get(ContentfulService);
-    contentfulService.getContentList.and.returnValue(Observable.of(response));
+    contentfulService.getContentList.and.returnValue(of(response));
     fixture.detectChanges();
   });
 
